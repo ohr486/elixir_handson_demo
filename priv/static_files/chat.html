@@ -1,0 +1,44 @@
+<html lang="ja">
+  <head>
+    <meta charset="utf-8"/>
+    <script src="http://localhost:4000/static/jquery.min.js"></script>
+    <title>Elixir-Chat-Websocket</title>
+    <style>
+      input { display: block; }
+      ul { list-style: none; }
+    </style>
+  </head>
+  <body>
+    <ul id="messages"></ul>
+    room1
+    <form id="chatbox">
+      <textarea></textarea>
+      <input type="submit" value="送信" />
+    </form>
+    <script>
+      $(function(){
+        var socket = null;
+        var msgBox = $("#chatbox textarea");
+        var messages = $("#messages");
+        $("#chatbox").submit(function(){
+          if (!msgBox.val()) return false;
+          if (!socket) {
+            alert("エラー: WebSocket接続が行われていません。");
+            return false;
+          }
+          socket.send(msgBox.val());
+          msgBox.val("");
+          return false;
+        });
+        if (!window["WebSocket"]) {
+          alert("エラー: WebSocketに対応していないブラウザです。")
+        } else {
+          socket = new WebSocket("ws://localhost:4000/websocket");
+          socket.onmessage = function(e) {
+            messages.append($("<li>").text(e.data));
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
