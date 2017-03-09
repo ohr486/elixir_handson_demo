@@ -1,5 +1,7 @@
 # Demo
 
+[![Join the chat at https://gitter.im/ohr486/elixir_handson_demo](https://badges.gitter.im/ohr486/elixir_handson_demo.svg)](https://gitter.im/ohr486/elixir_handson_demo?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 **TODO: Add description**
 
 ## Installation
