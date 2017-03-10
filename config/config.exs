@@ -21,11 +21,6 @@ use Mix.Config
 #     config :logger, level: :info
 #
 
-config :demo, Demo.Endpoint,
-  pubsub: [adapter: Phoenix.PubSub.PG2,
-           pool_size: 1,
-           name: :chat_pubsub]
-
 # It is also possible to import configuration files, relative to this
 # directory. For example, you can emulate configuration per environment
 # by uncommenting the line below and defining dev.exs, test.exs and such.
