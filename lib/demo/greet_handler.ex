@@ -3,7 +3,7 @@ defmodule Demo.GreetHandler do
     name = req.bindings[:name]
     headers = %{"content-type" => "text/plain"}
     body = "Hello, #{name}!"
-    {:ok, resp} = :cowboy_req.reply(200, headers, body, req)
-    {:ok, resp, opts}
+    req2 = :cowboy_req.reply(200, headers, body, req)
+    {:ok, req2, opts}
   end
 end
