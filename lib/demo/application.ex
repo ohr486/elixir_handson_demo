@@ -12,7 +12,7 @@ defmodule Demo.Application do
     children = [
       # Starts a worker by calling: Demo.Worker.start_link(arg1, arg2, arg3)
       # worker(Demo.Worker, [arg1, arg2, arg3]),
-      worker(__MODULE__, [], function: :run),
+      worker(__MODULE__, [], function: :start_cowboy),
       supervisor(Phoenix.PubSub.PG2, [:chat_pubsub, []])
     ]
 
@@ -23,7 +23,7 @@ defmodule Demo.Application do
 
   end
 
-  def run do
+  def start_cowboy do
     routes = [
       {"/", Demo.HelloHandler, []},
       {"/greet/:name", Demo.GreetHandler, []},
