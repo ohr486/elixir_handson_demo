@@ -1,21 +1,20 @@
 defmodule Demo.WebSocketHandler do
   @behaviour :cowboy_websocket
-  @topic "mytopic"
 
   def init(req, opts), do: {:cowboy_websocket, req, opts}
 
   def terminate(_reason, _req, _opts) do
-    Phoenix.PubSub.unsubscribe(:chat_pubsub, @topic)
+    Phoenix.PubSub.unsubscribe(:chat_pubsub, "mytopic")
     :ok
   end
 
   def websocket_init(opts) do
-    Phoenix.PubSub.subscribe(:chat_pubsub, @topic)
+    Phoenix.PubSub.subscribe(:chat_pubsub, "mytopic")
     {:ok ,opts}
   end
 
   def websocket_handle({:text, content}, opts) do
-    Phoenix.PubSub.broadcast(:chat_pubsub, @topic, {:text, content})
+    Phoenix.PubSub.broadcast(:chat_pubsub, "mytopic", {:text, content})
     {:ok, opts}
   end
   def websocket_handle(_frame, opts), do: {:ok, opts}
