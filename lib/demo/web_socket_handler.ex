@@ -21,5 +21,5 @@ defmodule Demo.WebSocketHandler do
   def websocket_handle(_frame, opts), do: {:ok, opts}
 
   def websocket_info({:text, content}, opts), do: {:reply, {:text, content}, opts}
-  def websocket_info(info, opts), do: {:ok, opts}
+  def websocket_info(_info, opts), do: {:ok, opts}
 end
