@@ -31,6 +31,8 @@ defmodule Demo.Mixfile do
   defp deps do
     [
       {:cowboy, git: "https://github.com/ninenines/cowboy.git", tag: "2.0.0-pre.7"},
+      {:gun, github: "ninenines/gun", branch: "master", runtime: false, only: [:test]},
+      {:ranch, github: "ninenines/ranch", tag: "1.3.0", manager: :rebar3, override: true},
       {:phoenix_pubsub, "~> 1.0"}
     ]
   end
