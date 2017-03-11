@@ -31,7 +31,8 @@ defmodule Demo.Application do
       {"/static/[...]", :cowboy_static, {:priv_dir, :demo, "static_files"}}
     ]
     dispatch = :cowboy_router.compile([{:_, routes}])
-    opts = [{:port, 4000}]
+    port = System.get_env("PORT") || "4000"
+    opts = [{:port, String.to_integer(port)}]
     env = %{dispatch: dispatch}
     {:ok, _pid} = :cowboy.start_clear(:http, 10, opts, %{env: env})
   end

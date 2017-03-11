@@ -15,7 +15,7 @@ defmodule Demo.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     # Specify extra applications you'll use from Erlang/Elixir
-    [extra_applications: [:logger, :cowboy, :phoenix_pubsub],
+    [extra_applications: [:logger, :cowboy, :phoenix_pubsub, :httpoison],
      mod: {Demo.Application, []}]
   end
 
@@ -31,6 +31,7 @@ defmodule Demo.Mixfile do
   defp deps do
     [
       {:cowboy, git: "https://github.com/ninenines/cowboy.git", tag: "2.0.0-pre.7"},
+      {:httpoison, "~> 0.10.0"},
       {:phoenix_pubsub, "~> 1.0"}
     ]
   end

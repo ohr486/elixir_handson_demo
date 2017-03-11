@@ -1,4 +1,5 @@
 defmodule Demo.WebSocketHandler do
+  require Logger
   @behaviour :cowboy_websocket
 
   def init(req, opts) do
@@ -16,6 +17,7 @@ defmodule Demo.WebSocketHandler do
   end
 
   def websocket_handle({:text, content}, opts) do
+    Logger.debug(inspect(content))
     Phoenix.PubSub.broadcast(:chat_pubsub, "mytopic", {:text, content})
     {:ok, opts}
   end
