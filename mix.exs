@@ -15,7 +15,7 @@ defmodule Demo.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     # Specify extra applications you'll use from Erlang/Elixir
-    [extra_applications: [:logger, :cowboy, :phoenix_pubsub, :httpoison],
+    [extra_applications: [:logger],
      mod: {Demo.Application, []}]
   end
 
